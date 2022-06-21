@@ -5,10 +5,10 @@ public class BankAccount
     public string name;
     public string history;
 
-    public Bank(int bankAmount, string name)
+    public BankAccount(int bankAmount, string name)
     {
-        bankAmount = bankAmount;
-        name = name;
+        this.bankAmount = bankAmount;
+        this.name = name;
     }
 
     public int getBankAmount()
@@ -16,9 +16,9 @@ public class BankAccount
         return bankAmount;
     }
 
-    public void setBankAmount(int age)
+    public void setBankAmount(int bankAmount)
     {
-        bankAmount = bankAmount;
+        this.bankAmount = bankAmount;
     }
 
     public int getHistory()
@@ -26,41 +26,44 @@ public class BankAccount
         return history;
     }
 
-    public void setHistory(int age)
+    public void setHistory(string history)
     {
-        history = history;
+        this.history = history;
     }
 }
 
-public save(BankAccount bankAccount, int amount)
+public class Operations
 {
-    bankAccount.setBankAmount(bankAccount.getBankAmount() + amount);
-
-    if (bankAccount.getHistory() == null)
+    public static void save(BankAccount bankAccount, int amount)
     {
-        bankAccount.getHistory() = "";
-    }
-    bankAccount.setHistory(bankAccount.getHistory() + "save succeed! you add " + amount + "on your account");
-}
+        bankAccount.setBankAmount(bankAccount.getBankAmount() + amount);
 
-public retrieve(BankAccount bankAccount, int amount)
-{
-    if (bankAccount.getBankAmount() >= amount)
-    {
-        bankAccount.setBankAmount(bankAccount.getBankAmount() - amount);
         if (bankAccount.getHistory() == null)
         {
             bankAccount.getHistory() = "";
         }
-        bankAccount.setHistory(bankAccount.getHistory() + "retreive succeed! you retreive " + amount + "on your account");
+        bankAccount.setHistory(bankAccount.getHistory() + "save succeed! you add " + amount + "on your account");
     }
-    else
-    {
-        throw new Exception("retreive failed : You don't have much money")
-    }
-}
 
-public string checkAccount(BankAccount bankAccount)
-{
-    return BankAccount.getHistory();
+    public static void retrieve(BankAccount bankAccount, int amount)
+    {
+        if (bankAccount.getBankAmount() >= amount)
+        {
+            bankAccount.setBankAmount(bankAccount.getBankAmount() - amount);
+            if (bankAccount.getHistory() == null)
+            {
+                bankAccount.getHistory() = "";
+            }
+            bankAccount.setHistory(bankAccount.getHistory() + "retreive succeed! you retreive " + amount + "on your account");
+        }
+        else
+        {
+            throw new Exception("retreive failed : You don't have much money");
+        }
+    }
+
+    public static string checkHistory(BankAccount bankAccount)
+    {
+        return BankAccount.getHistory();
+    }
 }
